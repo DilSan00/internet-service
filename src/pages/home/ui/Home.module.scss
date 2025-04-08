@@ -1,0 +1,21 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.title {
+  margin: 0 auto; 
+  font-weight: 700;
+  font-size: 24px;
+  background-color: #156bfd;
+  color: #fff;
+  padding: 7px 81px;
+  border-radius: 20px;
+}
