@@ -1,0 +1,13 @@
+.feedBack {
+  display: flex;
+  justify-content: center;
+  // justify-content: space-between;
+  gap: 85px;
+  margin-top: 45px;
+
+  @media (max-width: 768px) {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+  }
+}

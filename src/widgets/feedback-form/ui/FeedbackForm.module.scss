@@ -1,0 +1,27 @@
+.form {
+  text-align: center;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-bottom: 27px;
+}
+
+.inputList {
+  display: grid;
+  gap: 10px;
+}
+
+.submit {
+  padding: 5px 60px;
+  border-radius: 20px;
+}
+
