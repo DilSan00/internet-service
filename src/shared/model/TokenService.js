@@ -1,6 +1,6 @@
 class TokenStorageService {
   storageKeys = {
-    access: "interner-service_access",
+    access: "token-access",
   };
 
   getToken() {
