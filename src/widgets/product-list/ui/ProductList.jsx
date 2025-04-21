@@ -4,10 +4,10 @@ import s from './ProductList.module.scss'
 export function ProductList({ data }) {
   return (
     <div className={s.productsContainer}>
-      {data.map((product, index) => (
+      {data?.map((product, index) => (
         <ProductCard
           key={index}
-          title={product.title}
+          providerName={product.providerName}
           type={product.type}
           speed={product.speed}
           price={product.price}

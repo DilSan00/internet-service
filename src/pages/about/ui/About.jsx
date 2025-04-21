@@ -1,5 +1,5 @@
 import s from "./About.module.scss";
-import { LinkItem } from "../../../shared/ui";
+import { LinkItem } from "../../../components/ui/linkItem/LinkItem";
 import { FaGithub } from "react-icons/fa";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 import { AiFillTwitterCircle } from "react-icons/ai";

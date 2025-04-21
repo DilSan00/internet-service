@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "../../shared/styles/global.scss";
-import { Space } from "../../components/Space/Space";
+import { Space } from "../../components/ui/Space/Space";
 import { useScreenWidth } from "./../../shared/hooks/useScreenWidth";
 import { HeaderMobile } from "../../widgets/header/ui/HeaderMobile/HeaderMobile";
 import { Header } from "../../widgets/header/ui/Header/Header";

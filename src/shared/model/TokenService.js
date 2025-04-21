@@ -1,6 +1,6 @@
-class TokenStorageService {
+class TokenService {
   storageKeys = {
-    access: "token-access",
+    access: "token-access-is",
   };
 
   getToken() {
@@ -16,4 +16,4 @@ class TokenStorageService {
   }
 }
 
-export default new TokenStorageService();
+export default new TokenService();
