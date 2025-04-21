@@ -1,1 +1,3 @@
-export { FeedBack } from "./ui/Feedback";
+import { FeedBack } from "./ui/Feedback";
+
+export default FeedBack;

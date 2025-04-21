@@ -1,9 +1,9 @@
 import s from "./ProductCard.module.scss";
 
-export const ProductCard = ({ title, type, speed, price }) => {
+export const ProductCard = ({ providerName, type, speed, price }) => {
   return (
     <div className={s.productCard}>
-      <p className={s.title}>{title} - {type}</p>
+      <p className={s.title}>{providerName} - {type}</p>
 
       <div>
       <p className={s.datails}>Speed: {speed} mbps</p>

@@ -1,5 +1,5 @@
 import s from "./Actions.module.scss";
-import { AppButton } from "../../../shared/ui/AppButton/AppButton";
+import { AppButton } from "../../../components/ui/AppButton/AppButton";
 
 export function Actions() {
   return (
@@ -11,20 +11,17 @@ export function Actions() {
 
       <div className={s.btnContainer}>
         <AppButton
-          title="Задать вапрос"
           onClick={() => console.log("Вопрос задан")}
           className={s.btn}
-        />
-        <AppButton
-          title="Начать чат"
-          onClick={() => console.log("Чат начат")}
-          className={s.btn}
-        />
-        <AppButton
-          title="Обратная вызов"
-          onClick={() => console.log("Вызван")}
-          className={s.btn}
-        />
+        >
+          Задать вапрос
+        </AppButton>
+        <AppButton onClick={() => console.log("Чат начат")} className={s.btn}>
+          Начать чат
+        </AppButton>
+        <AppButton onClick={() => console.log("Вызван")} className={s.btn}>
+          Обратная вызов
+        </AppButton>
       </div>
     </div>
   );
