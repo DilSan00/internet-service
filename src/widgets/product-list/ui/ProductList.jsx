@@ -1,11 +1,13 @@
+import clsx from "clsx";
 import { ProductCard } from "../../../components/ProductCard/ProductCard";
-import s from './ProductList.module.scss'
+import s from "./ProductList.module.scss";
 
-export function ProductList({ data }) {
+export function ProductList({ data, className }) {
   return (
-    <div className={s.productsContainer}>
+    <div className={clsx(s.productsContainer, className)}>
       {data?.map((product, index) => (
         <ProductCard
+          data={product}
           key={index}
           providerName={product.providerName}
           type={product.type}

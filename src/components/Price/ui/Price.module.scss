@@ -1,0 +1,47 @@
+.price {
+  display: flex;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.fromInput {
+  color: #000;
+}
+
+.toInput {
+  color: #ff8d00;
+
+  &::placeholder {
+    color: #ff8d00;
+  }
+}
+
+.input {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  border-radius: 10px;
+  padding-right: 10px;
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+.dollar {
+  position: absolute;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  right: 30px;
+  color: #6a6a6a;
+}
+
+.toDollar {
+  color: #ff8d00;
+}

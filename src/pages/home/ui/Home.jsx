@@ -14,9 +14,9 @@ export const Home = () => {
     return <div>Error: Data is not available or is not an array</div>;
   }
 
-  const sortedInternets = [...data].sort((a, b) => b.speed - a.speed);
-  console.log(sortedInternets);
-
+  const sortedInternets = [...data]
+    .sort((a, b) => b.speed - a.speed)
+    .slice(0, 4);
 
   return (
     <div className={s.home}>
@@ -24,6 +24,7 @@ export const Home = () => {
 
       <div className={s.card}>
         <h2 className={s.title}>Tops</h2>
+
         <ProductList data={sortedInternets} />
       </div>
     </div>
