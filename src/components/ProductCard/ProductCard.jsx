@@ -7,6 +7,7 @@ export const ProductCard = ({ data, providerName, type, speed, price }) => {
 
   const clickByProduct = () => {
     navigate(`${ROUTE.catalog}/${data._id}`, { state: { data } });
+    console.log(data);
   };
 
   return (
