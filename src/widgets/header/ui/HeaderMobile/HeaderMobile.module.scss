@@ -1,6 +1,10 @@
-.header {
+.headerContainer {
   position: sticky;
   top: 0;
+}
+
+.header {
+  position: relative;
   z-index: 999;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background: rgb(255, 255, 255);
@@ -10,27 +14,129 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
+    padding: 0 10px;
 
-    .navigation {
-      display: flex;
-      gap: 40px;
+    .logo {
+      color: #156bfd;
+      font-size: 28px;
+      font-weight: 500;
 
-      .navItem {
-        color: black; 
-        font-size: 20px;
-        font-weight: 400;
-        transition: all .3s ease;
+      span {
+        color: #0d0d0d;
+        font-weight: 700;
+      }
+    }
+
+    .burger {
+      display: grid;
+      gap: 4px;
+      cursor: pointer;
+
+      .line,
+      .middle {
+        width: 30px;
+        height: 4px;
+        background-color: #212121;
+      }
+    }
+
+    .burgerActive {
+      .line {
+        transform: rotate(45deg) translate(6px, 6px);
+        transition: all 0.3s ease-in-out;
       }
 
-      .navItem:hover {
+      .middle {
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    .burgerClose {
+      .line {
+        transform: rotate(0) translateX(0px);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .middle {
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .line:nth-child(3) {
+        transform: rotate(0) translateX(0px);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 990;
+  width: 90%;
+  height: 100vh;
+  padding: 30px;
+  background-color: white;
+  animation: slideIn 0.3s ease-in-out;
+  user-select: none;
+
+  .navigation {
+    display: grid;
+    gap: 10px;
+
+    .authLink {
+      background-color: orange;
+      color: white;
+      border-radius: 10px;
+      padding: 6px 40px;
+      font-size: 22px;
+      font-weight: 500;
+      max-width: 200px;
+      text-align: center;
+    }
+
+    .navItem {
+      color: black;
+      font-size: 20px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+
+      &.active {
         color: orange;
       }
     }
   }
+}
 
-  .container {
-    max-width: 1224px;
-    width: 100%;
-    margin: 0 auto;
+.menuClose {
+  animation: slideOut 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
   }
 }

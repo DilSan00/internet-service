@@ -1,6 +1,7 @@
-class TokenStorageService {
+class TokenService {
   storageKeys = {
-    access: "interner-service_access",
+    access: "token-access-is",
+    userData: "user",
   };
 
   getToken() {
@@ -14,6 +15,14 @@ class TokenStorageService {
   clearToken() {
     localStorage.removeItem(this.storageKeys.access);
   }
+
+  getUser() {
+    return localStorage.getItem(this.storageKeys.userData) || {};
+  }
+
+  setUser(user) {
+    localStorage.setItem(this.storageKeys.userData, user);
+  }
 }
 
-export default new TokenStorageService();
+export default new TokenService();

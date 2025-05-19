@@ -1,0 +1,32 @@
+.form {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .container {
+    display: grid;
+    gap: 8px;
+    text-align: center;
+
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #212121;
+    }
+
+    .description {
+      font-size: 18px;
+      font-weight: 500;
+      color: #414141;
+
+      .link {
+        color: #ff8d00;
+        margin-left: 4px;
+      }
+    }
+  }
+}

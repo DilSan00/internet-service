@@ -11,7 +11,7 @@ export default defineConfig({
     open: false,
     proxy: {
       "/api": {
-        target: `http://localhost:3000`,
+        target: `https://internet-service-api.onrender.com/`,
         changeOrigin: true,
         rewrite: (p) => p.replace(/^\/api/, ""),
       },

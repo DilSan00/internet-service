@@ -1,0 +1,33 @@
+.applications {
+  width: 700px;
+
+  .tableSkeletons {
+    display: grid;
+    gap: 8px;
+  }
+
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+
+    .headTH {
+      color: #212121;
+      font-weight: 700;
+    }
+
+    th,
+    td {
+      border: 1px solid #212121;
+      padding: 8px 20px;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    th {
+      // background-color: white;
+      color: #212121;
+    }
+  }
+}

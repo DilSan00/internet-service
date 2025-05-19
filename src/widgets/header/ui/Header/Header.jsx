@@ -1,26 +1,44 @@
 import clsx from "clsx";
 import s from "./Header.module.scss";
+import { Link, useLocation } from "react-router-dom";
+import { ROUTE } from "../../../../shared/api/path";
 
 export function Header() {
+  const { pathname } = useLocation();
+
+  const isActive = (route) => pathname === route;
+
   return (
     <header className={s.header}>
       <div className={clsx(s.headerContent, s.container)}>
-        <p>Logo</p>
+        <p className={s.logo}>
+          Buy<span>Zen</span>
+        </p>
 
         <nav className={s.navigation}>
-          <a className={s.navItem} href="/">
+          <Link
+            className={clsx(s.navItem, isActive(ROUTE.home) && s.active)}
+            to="/"
+          >
             Главная
-          </a>
-          <a className={s.navItem} href="/about">
+          </Link>
+          <Link
+            className={clsx(s.navItem, isActive(ROUTE.about) && s.active)}
+            to="/about"
+          >
             О нас
-          </a>
-          <a className={s.navItem} href="/catalog">
+          </Link>
+          <Link
+            className={clsx(s.navItem, isActive(ROUTE.catalog) && s.active)}
+            to="/catalog"
+          >
             Каталог
-          </a>
-          <a className={s.navItem} href="/feedback">
-            Обратная связь
-          </a>
+          </Link>
         </nav>
+
+        <Link className={s.authLink} to={ROUTE.signIn}>
+          Войти
+        </Link>
       </div>
     </header>
   );

@@ -1,0 +1,125 @@
+.skeleton {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product {
+  display: flex;
+  gap: 80px;
+  padding: 32px;
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: "Inter", sans-serif;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  text-align: left;
+  background: linear-gradient(145deg, #dbe9ff, #a3caff);
+  color: #1a2a3a;
+
+  .title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+
+  .overview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+
+    .descriptionContainer {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0;
+
+      .description {
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+
+      span:first-child {
+        font-weight: 500;
+      }
+
+      .text {
+        font-weight: 400;
+      }
+
+      .textPrice {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .btn {
+    background-color: #156bfd;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #0f56d1;
+    }
+  }
+
+  .form {
+    padding: 38px 0;
+
+    .applicationTitle {
+      color: #212121;
+      font-size: 36px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .container {
+      margin: 32px 0;
+
+      .prodiverDatas {
+        color: rgb(21, 107, 253);
+        font-size: 24px;
+        font-weight: 400;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 400px;
+        width: 100%;
+        margin: 10px auto 0 auto;
+        border-bottom: 1px solid rgb(255, 141, 0);
+        padding: 0 0 0 20px;
+      }
+
+      span {
+        background: rgb(255, 141, 0);
+        color: white;
+        padding: 6px 20px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .banner {
+      display: flex;
+      justify-content: center;
+      padding: 0 10px;
+    }
+  }
+}
