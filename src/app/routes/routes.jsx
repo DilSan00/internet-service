@@ -13,6 +13,7 @@ const SignIn = lazy(() => import("../../pages/sign-in"));
 const SignUp = lazy(() => import("../../pages/sign-up"));
 const CreateProduct = lazy(() => import("../../pages/create-product"));
 const Applications = lazy(() => import("../../pages/applications"));
+const CartPage = lazy(() => import("../../pages/cart"));
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
       { path: ROUTE.home, element: <Home /> },
       { path: ROUTE.about, element: <About /> },
       { path: ROUTE.catalog, element: <Catalog /> },
+      { path: ROUTE.cart, element: <CartPage /> },
       { path: ROUTE.signIn, element: <SignIn /> },
       { path: ROUTE.signUp, element: <SignUp /> },
     ],

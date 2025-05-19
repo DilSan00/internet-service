@@ -1,58 +1,47 @@
-import { useParams } from "react-router-dom";
-import { useGetProductQuery, useSendApplicationMutation } from "../api";
+import { useParams, useNavigate } from "react-router-dom";
+import { useAddToCartMutation, useGetProductQuery } from "../api";
 import s from "./ProductPage.module.scss";
-import { useState } from "react";
 import { Skeleton } from "../../../components/ui/skeleton-components";
-import { Modal } from "../../../components/ui/Modal/Modal";
-import { Input } from "../../../components/ui/Input";
-import { AppButton } from "../../../components/ui/AppButton/AppButton";
-import { useValidation } from "../../../shared/hooks/useValidation";
 import { LoaderFullScreen } from "../../../components/ui/loader-components";
+import { Modal } from "../../../components/ui/Modal/Modal";
+import { AppButton } from "../../../components/ui/AppButton/AppButton";
+import { ROUTE } from "../../../shared/api/path";
+import { useState } from "react";
 
 export function ProductPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [form, setForm] = useState({
-    fullName: "",
-    phone: "",
-  });
-
+  const [isOpen, setIsOpen] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data, isLoading } = useGetProductQuery({ id });
-  const [sendApplication, { isLoading: sendLoading }] =
-    useSendApplicationMutation();
-  const { errors, setValidationErrors } = useValidation();
+  const [addToCart, { isLoading: sendLoading, isSuccess }] =
+    useAddToCartMutation();
 
-  const openModalHandler = () => {
-    setIsOpen(true);
-  };
-
-  const HanldeChange = (e) => {
-    setForm((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const SubmitHander = async (e) => {
+  const addToCardHandler = async (e) => {
     e.preventDefault();
-    try {
-      await sendApplication({
-        ...form,
-        providerName: data.providerName,
-        type: data.type,
-        price: data.price,
-      }).unwrap();
-      setForm({
-        fullName: "",
-        phone: "",
-      });
-    } catch (error) {
-      console.log(error);
-      if (Array.isArray(error.data?.message)) {
-        setValidationErrors(error.data.message);
-      }
+
+    if (!data?._id) {
+      console.error("Нет данных о товаре");
+      return;
     }
+
+    try {
+      await addToCart({
+        productId: data._id,
+        quantity: 1,
+      }).unwrap();
+    } catch (error) {
+      console.error("Ошибка при добавлении в корзину:", error);
+    }
+  };
+
+  const goToCart = () => {
+    navigate(ROUTE.cart);
+  };
+
+  const continueShopping = () => {
+    setIsOpen(false);
+    navigate(ROUTE.catalog);
   };
 
   if (isLoading) {
@@ -60,12 +49,28 @@ export function ProductPage() {
   }
 
   if (!data) {
-    return <div className={s.notFound}>Товар не найден {id}</div>; // можно сделать красивый фолбэк
+    return <div className={s.notFound}>Товар не найден {id}</div>;
   }
 
   return (
     <div className={s.product}>
       {sendLoading && <LoaderFullScreen size={50} />}
+
+      {isSuccess && isOpen && (
+        <Modal onClose={() => setIsOpen(false)}>
+          <div className={s.successModal}>
+            <h3>Товар успешно добавлен в корзину!</h3>
+            <div className={s.modalButtons}>
+              <AppButton className={s.successBtn} onClick={goToCart}>
+                Корзина
+              </AppButton>
+              <AppButton className={s.successBtn} onClick={continueShopping}>
+                Продолжить покупки
+              </AppButton>
+            </div>
+          </div>
+        </Modal>
+      )}
 
       <div className={s.banner}>
         <img src={data.image} alt={data.title} />
@@ -76,13 +81,13 @@ export function ProductPage() {
 
         <div className={s.overview}>
           <div className={s.descriptionContainer}>
-            <p className={s.description}>Описания</p>
+            <p className={s.description}>Описание</p>
             <p className={s.description}>{data.description}</p>
           </div>
 
           <div className={s.info}>
             <span>Цена:</span>
-            <span className={s.textPrice}>{data.price} $</span>
+            <span className={s.textPrice}>{data.price} ₽</span>
           </div>
           <div className={s.info}>
             <span>Кол-во товара:</span>
@@ -90,14 +95,14 @@ export function ProductPage() {
           </div>
         </div>
 
-        <button className={s.btn} onClick={openModalHandler}>
-          Подать заявку
+        <button className={s.btn} onClick={addToCardHandler}>
+          Добавить в корзину
         </button>
       </div>
 
-      {isOpen && (
+      {/* {isOpen && (
         <Modal onClose={setIsOpen}>
-          <form onSubmit={SubmitHander} className={s.form}>
+          <form onSubmit={submitHander} className={s.form}>
             <p className={s.applicationTitle}>Отправка заявки</p>
 
             <div className={s.container}>
@@ -126,7 +131,7 @@ export function ProductPage() {
             <AppButton type="submit">Отправить</AppButton>
           </form>
         </Modal>
-      )}
+      )} */}
     </div>
   );
 }

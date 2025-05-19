@@ -2,9 +2,15 @@ import clsx from "clsx";
 import s from "./Header.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTE } from "../../../../shared/api/path";
+import TokenService from "../../../../shared/model/TokenService";
+import { useGetMeQuery } from "../../../../pages/sign-in/api";
 
 export function Header() {
   const { pathname } = useLocation();
+  const isToken = TokenService.getToken();
+  const { data: userData } = useGetMeQuery(undefined, {
+    skip: !isToken,
+  });
 
   const isActive = (route) => pathname === route;
 
@@ -34,11 +40,24 @@ export function Header() {
           >
             Каталог
           </Link>
+          {userData?.role === "admin" && (
+            <Link className={s.navItem} to={ROUTE.admin}>
+              Админ панель
+            </Link>
+          )}
         </nav>
 
-        <Link className={s.authLink} to={ROUTE.signIn}>
-          Войти
-        </Link>
+        <div className={s.authLinks}>
+          {!isToken ? (
+            <Link className={s.authLink} to={ROUTE.signIn}>
+              Войти
+            </Link>
+          ) : (
+            <Link className={s.authLink} to={ROUTE.cart}>
+              Корзина
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );

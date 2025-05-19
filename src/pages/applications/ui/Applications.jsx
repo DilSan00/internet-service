@@ -29,10 +29,8 @@ export function Applications() {
               <tr key={app._id}>
                 <th>{app.fullName}</th>
                 <th>{app.phone}</th>
-                <th>
-                  {app.providerName} - {app.type}
-                </th>
-                <th>{app.price} сом</th>
+                <th>{app.title}</th>
+                <th>{app.price} KGS</th>
               </tr>
             ))}
           </tbody>

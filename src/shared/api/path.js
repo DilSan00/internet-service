@@ -6,7 +6,8 @@ export const ROUTE = {
   feedback: "/feedback",
   signIn: "/sign-in",
   signUp: "/sign-up",
-  admin: '/admin',
+  admin: "/admin",
   internetCreate: "/admin/add-internet",
   applications: "/admin/applications",
+  cart: "/cart",
 };

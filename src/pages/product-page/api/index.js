@@ -9,14 +9,15 @@ export const productApi = $api.injectEndpoints({
       }),
     }),
 
-    sendApplication: build.mutation({
+    addToCart: build.mutation({
       query: (body) => ({
-        url: "/applications/",
+        url: "/cart/add",
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Cart"],
     }),
   }),
 });
 
-export const { useGetProductQuery, useSendApplicationMutation } = productApi;
+export const { useGetProductQuery, useAddToCartMutation } = productApi;

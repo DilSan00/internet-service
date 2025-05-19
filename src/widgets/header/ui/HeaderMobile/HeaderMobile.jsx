@@ -3,11 +3,17 @@ import s from "./HeaderMobile.module.scss";
 import { useState } from "react";
 import { ROUTE } from "../../../../shared/api/path";
 import { Link, useLocation } from "react-router-dom";
+import TokenService from "../../../../shared/model/TokenService";
+import { useGetMeQuery } from "../../../../pages/sign-in/api";
 
 export function HeaderMobile() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { pathname } = useLocation();
+  const isToken = TokenService.getToken();
+  const { data: userData } = useGetMeQuery(undefined, {
+    skip: !isToken,
+  });
 
   const isActive = (route) => pathname === route;
 
@@ -67,9 +73,20 @@ export function HeaderMobile() {
             >
               Каталог
             </Link>
-            <Link className={s.authLink} to={ROUTE.signIn}>
-              Войти
-            </Link>
+            {userData?.role === "admin" && (
+              <Link className={s.navItem} to={ROUTE.admin}>
+                Админ панель
+              </Link>
+            )}
+            {!isToken ? (
+              <Link className={s.authLink} to={ROUTE.signIn}>
+                Войти
+              </Link>
+            ) : (
+              <Link className={s.authLink} to={ROUTE.cart}>
+                Корзина
+              </Link>
+            )}
           </nav>
         </div>
       )}
