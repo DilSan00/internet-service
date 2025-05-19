@@ -4,26 +4,29 @@ import s from "./Input.module.scss";
 export function Input({
   placeholder,
   type,
-  textarea = false,
-  value,
+  validate,
+  textarea,
   onChange,
+  ...props
 }) {
   return (
     <div className={clsx(s.container, textarea === true && s.textArea)}>
+      {validate && <p className={s.error}>* {validate}</p>}
+
       {textarea === true ? (
         <textarea
           className={s.textarea}
           placeholder={placeholder}
-          value={value}
           onChange={onChange}
+          {...props}
         />
       ) : (
         <input
-          className={s.input}
-          type={type}
+          className={clsx(s.input, props.type === "number" && s.noArrow)}
           placeholder={placeholder}
-          value={value}
           onChange={onChange}
+          type={type}
+          {...props}
         />
       )}
     </div>

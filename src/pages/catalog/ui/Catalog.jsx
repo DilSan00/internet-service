@@ -1,16 +1,18 @@
 import s from "./Catalog.module.scss";
 import { useGetProductsQuery } from "../api";
-import { ProductList } from "../../../widgets/product-list/ui/productList";
+import { ProductList } from "../../../widgets/product-list";
+import { SkeletonList } from "../../../components/ui/skeleton-components";
 
 export function Catalog() {
-  const { data, isLoading, isError } = useGetProductsQuery();
+  const { data, isLoading } = useGetProductsQuery();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error: Data is not available or is not an array</div>;
+  if (isLoading) {
+    return <SkeletonList />;
+  }
 
   return (
     <div className={s.catalog}>
-      <ProductList data={data} className={s.filterList} />
+      <ProductList data={data} />
     </div>
   );
 }

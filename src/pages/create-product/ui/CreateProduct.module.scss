@@ -1,0 +1,27 @@
+.form {
+  width: 500px;
+  display: grid;
+  gap: 30px;
+
+  .title {
+    color: #212121;
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .inputContainer {
+    display: grid;
+    gap: 20px;
+  }
+
+  .btnContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    .resetBtn {
+      background-color: brown;
+    }
+  }
+}

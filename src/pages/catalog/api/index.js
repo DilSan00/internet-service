@@ -4,7 +4,7 @@ export const catalogApi = $api.injectEndpoints({
   endpoints: (build) => ({
     getProducts: build.query({
       query: () => ({
-        url: "/internets",
+        url: "/products",
         method: "GET",
       }),
     }),

@@ -1,6 +1,7 @@
 class TokenService {
   storageKeys = {
     access: "token-access-is",
+    userData: "user",
   };
 
   getToken() {
@@ -13,6 +14,14 @@ class TokenService {
 
   clearToken() {
     localStorage.removeItem(this.storageKeys.access);
+  }
+
+  getUser() {
+    return localStorage.getItem(this.storageKeys.userData) || {};
+  }
+
+  setUser(user) {
+    localStorage.setItem(this.storageKeys.userData, user);
   }
 }
 

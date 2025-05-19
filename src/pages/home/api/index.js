@@ -4,7 +4,7 @@ export const homeProductApi = $api.injectEndpoints({
   endpoints: (build) => ({
     getProductTops: build.query({
       query: () => ({
-        url: "/internets/",
+        url: "/products/",
         method: "GET",
       }),
     }),

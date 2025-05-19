@@ -1,0 +1,16 @@
+.admin {
+  display: flex;
+  scrollbar-width: none;
+
+  .adminContent {
+    padding: 40px 10px;
+    margin: 0 auto;
+  }
+
+  .sideBar {
+    height: auto;
+    min-height: 100svh;
+    padding: 50px 60px 50px 30px;
+    background-color: #212121;
+  }
+}

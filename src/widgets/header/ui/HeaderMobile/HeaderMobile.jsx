@@ -1,10 +1,15 @@
 import clsx from "clsx";
 import s from "./HeaderMobile.module.scss";
 import { useState } from "react";
+import { ROUTE } from "../../../../shared/api/path";
+import { Link, useLocation } from "react-router-dom";
 
 export function HeaderMobile() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { pathname } = useLocation();
+
+  const isActive = (route) => pathname === route;
 
   const handleToggle = () => {
     if (isOpen) {
@@ -22,7 +27,9 @@ export function HeaderMobile() {
     <section className={s.headerContainer}>
       <header className={s.header}>
         <div className={clsx(s.headerContent, s.container)}>
-          <p>Logo</p>
+          <p className={s.logo}>
+            Buy<span>Zen</span>
+          </p>
 
           <div
             onClick={handleToggle}
@@ -42,18 +49,27 @@ export function HeaderMobile() {
       {(isOpen || isClosing) && (
         <div className={clsx(s.menu, isClosing && s.menuClose)}>
           <nav className={s.navigation}>
-            <a className={s.navItem} href="/">
+            <Link
+              className={clsx(s.navItem, isActive(ROUTE.home) && s.active)}
+              to={ROUTE.home}
+            >
               Главная
-            </a>
-            <a className={s.navItem} href="/about">
+            </Link>
+            <Link
+              className={clsx(s.navItem, isActive(ROUTE.about) && s.active)}
+              to={ROUTE.about}
+            >
               О нас
-            </a>
-            <a className={s.navItem} href="/catalog">
+            </Link>
+            <Link
+              className={clsx(s.navItem, isActive(ROUTE.catalog) && s.active)}
+              to={ROUTE.catalog}
+            >
               Каталог
-            </a>
-            <a className={s.navItem} href="/feedback">
-              Обратная связь
-            </a>
+            </Link>
+            <Link className={s.authLink} to={ROUTE.signIn}>
+              Войти
+            </Link>
           </nav>
         </div>
       )}
