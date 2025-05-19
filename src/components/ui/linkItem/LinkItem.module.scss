@@ -6,11 +6,13 @@
   background-color: #156bfd;
   border-radius: 30px;
   padding: 10px 20px 10px 25px;
-}
-
-a {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 24px;
   color: #fff;
+
+  &:hover {
+    color: orange;
+    transition: all .3s linear;
+  }
 }

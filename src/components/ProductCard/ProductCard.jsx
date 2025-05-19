@@ -2,27 +2,23 @@ import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../../shared/api/path";
 import s from "./ProductCard.module.scss";
 
-export const ProductCard = ({ data, providerName, type, speed, price }) => {
+export const ProductCard = ({ title, image, price, id }) => {
   const navigate = useNavigate();
 
   const clickByProduct = () => {
-    navigate(`${ROUTE.catalog}/${data._id}`, { state: { data } });
-    console.log(data);
+    navigate(`${ROUTE.catalog}/${id}`);
   };
 
   return (
     <div className={s.productCard}>
-      <p className={s.title}>
-        {providerName} - {type}
-      </p>
-
-      <div>
-        <p className={s.details}>Speed: {speed} mbps</p>
-        <p className={s.details}>Price: {price}</p>
+      <div className={s.imageContainer}>
+        <img src={image} alt={title} className={s.img} />
       </div>
 
+      <p className={s.title}>{title}</p>
+
       <button onClick={clickByProduct} className={s.btn}>
-        Подключить тариф
+        {price} KGS
       </button>
     </div>
   );

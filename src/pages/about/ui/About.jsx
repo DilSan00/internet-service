@@ -10,54 +10,42 @@ import { IoLogoBehance } from "react-icons/io5";
 export function About() {
   return (
     <div className={s.about}>
-      <img
-        className={s.titleImg}
-        src="https://disenowebakus.net/imagenes/articulos/internet.jpg"
-        alt="internetImg"
-      />
+      <div className={s.bannerContainer}>
+        <img
+          className={s.banner}
+          src="src/shared/assets/images/banner-aboutus.jpg"
+          alt="banner"
+        />
+      </div>
 
-      <h1 className={s.title}>A Little Bit About Us</h1>
-      <p className={s.text}>
-        We’re a team of developers, designers, and digital problem-solvers who
-        are passionate about creating services that actually work. No fluff, no
-        unnecessary features — just clean design, solid code, and a focus on
-        what users really need. We won’t promise you miracles — but we will
-        deliver something reliable, thoughtful, and built with care.
-      </p>
+      <div className={s.container}>
+        <p className={s.subTitle}>О нас</p>
+        <p className={s.text}>
+          Добро пожаловать в BuyZen — интернет-магазин, где покупки становятся
+          простыми, как вдох. Мы создали BuyZen с одной целью: избавить людей от
+          стресса, спешки и хаоса, которые часто сопровождают онлайн-шопинг. У
+          нас всё работает иначе: минимализм в интерфейсе, прозрачность в ценах
+          и только отобранные товары, за которые нам не стыдно.
+        </p>
+      </div>
 
-      <p className={s.linkText}>Links</p>
+      <div className={s.container}>
+        <p className={s.subTitle}>Что мы предлагаем</p>
+        <div className={s.cardList}>
+          <div className={s.card}>Качественные и проверенные товары</div>
+          <div className={s.card}>Удобный и быстрый заказ без лишнего</div>
+          <div className={s.card}>Честную поддержку без роботов</div>
+          <div className={s.card}>Быструю доставку по всей стране</div>
+        </div>
+      </div>
 
-      <div className={s.linkList}>
-        <LinkItem
-          title="Github"
-          link="https://github.com/"
-          icon={<FaGithub size={40} />}
-        />
-        <LinkItem
-          title="LinkedIn"
-          link="https://www.linkedin.com/"
-          icon={<TbBrandLinkedinFilled size={40} />}
-        />
-        <LinkItem
-          title="Twitter"
-          link="https://twitter.com/"
-          icon={<AiFillTwitterCircle size={40} />}
-        />
-        <LinkItem
-          title="Instagram"
-          link="https://www.instagram.com/"
-          icon={<FaInstagram size={40} />}
-        />
-        <LinkItem
-          title="Dribbble"
-          link="https://dribbble.com/"
-          icon={<AiFillDribbbleCircle size={40} />}
-        />
-        <LinkItem
-          title="Behance"
-          link="https://www.behance.net/"
-          icon={<IoLogoBehance size={40} />}
-        />
+      <div className={s.container}>
+        <p className={s.subTitle}>Почему BuyZen?</p>
+        <p className={s.text}>
+          Мы не гонимся за массой, мы заботимся о том, чтобы каждая покупка
+          приносила тебе радость. Покупать — должно быть так же просто, как
+          дышать. Вот это и есть BuyZen.
+        </p>
       </div>
     </div>
   );

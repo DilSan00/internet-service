@@ -1,0 +1,28 @@
+.adminPanel {
+  .title {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: "Courier New", Courier, monospace;
+    margin-bottom: 40px;
+  }
+
+  .linkList {
+    display: grid;
+    gap: 20px;
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .active {
+      color: orange;
+    }
+  }
+}

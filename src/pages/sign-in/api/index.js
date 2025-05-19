@@ -9,7 +9,13 @@ export const signInApi = $api.injectEndpoints({
         body,
       }),
     }),
+    getMe: build.query({
+      query: () => ({
+        url: "/auth/me/",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = signInApi;
+export const { useLoginMutation, useGetMeQuery } = signInApi;

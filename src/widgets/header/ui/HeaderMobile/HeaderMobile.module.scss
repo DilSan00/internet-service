@@ -17,6 +17,17 @@
     margin: 0 auto;
     padding: 0 10px;
 
+    .logo {
+      color: #156bfd;
+      font-size: 28px;
+      font-weight: 500;
+
+      span {
+        color: #0d0d0d;
+        font-weight: 700;
+      }
+    }
+
     .burger {
       display: grid;
       gap: 4px;
@@ -82,15 +93,26 @@
     display: grid;
     gap: 10px;
 
-    .navItem {
-      color: black;
-      font-size: 26px;
-      font-weight: 400;
-      transition: all .3s ease;
+    .authLink {
+      background-color: orange;
+      color: white;
+      border-radius: 10px;
+      padding: 6px 40px;
+      font-size: 22px;
+      font-weight: 500;
+      max-width: 200px;
+      text-align: center;
     }
 
-    .navItem:hover {
-      color: orange;
+    .navItem {
+      color: black;
+      font-size: 20px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+
+      &.active {
+        color: orange;
+      }
     }
   }
 }

@@ -1,18 +1,11 @@
+import { SkeletonList } from "../../../components/ui/skeleton-components";
 import { BannerContainer } from "../../../widgets/banner-container/ui/BannerContainer";
 import { ProductList } from "../../../widgets/product-list";
 import { useGetProductTopsQuery } from "../api";
 import s from "./Home.module.scss";
 
-export const Home = () => {
-  const { data, isLoading } = useGetProductTopsQuery();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!Array.isArray(data)) {
-    return <div>Error: Data is not available or is not an array</div>;
-  }
+export function Home() {
+  const { data = [], isLoading } = useGetProductTopsQuery();
 
   const sortedInternets = [...data]
     .sort((a, b) => b.speed - a.speed)
@@ -25,8 +18,12 @@ export const Home = () => {
       <div className={s.card}>
         <h2 className={s.title}>Tops</h2>
 
-        <ProductList data={sortedInternets} />
+        {isLoading ? (
+          <SkeletonList size={4} />
+        ) : (
+          <ProductList data={sortedInternets} />
+        )}
       </div>
     </div>
   );
-};
+}
