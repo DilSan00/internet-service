@@ -5,6 +5,17 @@
   border-radius: 10px;
   gap: 6px;
 
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .eye {
+      padding-right: 20px;
+      cursor: pointer;
+    }
+  }
+
   .input {
     width: 100%;
     outline: none;

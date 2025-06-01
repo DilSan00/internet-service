@@ -13,6 +13,8 @@ export function Catalog() {
   return (
     <div className={s.catalog}>
       <ProductList data={data} />
+
+      {!data && <p>Каталог пуст</p>}
     </div>
   );
 }

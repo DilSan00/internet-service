@@ -68,7 +68,7 @@ export function SignIn() {
         onChange={handleInputChange}
       />
 
-      <AppButton>Войти</AppButton>
+      <AppButton className={s.btn}>Войти</AppButton>
     </form>
   );
 }

@@ -6,12 +6,14 @@ import {
   useClearCartMutation,
 } from "../api";
 import s from "./CartPage.module.scss";
+import { LoaderFullScreen } from "../../../components/ui/loader-components/LoaderFullScreen/LoaderFullScreen";
 
 export function CartPage() {
   const navigate = useNavigate();
   const { data: cartData, isLoading, error, refetch } = useGetCartQuery();
-  const [createApplication] = useCreateApplicationMutation();
-  const [clearCart] = useClearCartMutation();
+  const [createApplication, { isLoading: loadingCreateApp }] =
+    useCreateApplicationMutation();
+  const [clearCart, { isLoading: loadingClearCart }] = useClearCartMutation();
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -53,8 +55,8 @@ export function CartPage() {
     }
   };
 
-  if (isLoading) {
-    return <div className={s.loading}>Загрузка...</div>;
+  if (isLoading || loadingClearCart || loadingCreateApp) {
+    return <LoaderFullScreen size={60} />;
   }
 
   if (error) {

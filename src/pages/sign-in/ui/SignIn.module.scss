@@ -7,6 +7,11 @@
   flex-direction: column;
   gap: 20px;
 
+  .btn {
+    margin: 0 auto;
+    width: 220px;
+  }
+
   .container {
     display: grid;
     gap: 8px;

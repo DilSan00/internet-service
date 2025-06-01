@@ -23,6 +23,8 @@ export function Home() {
         ) : (
           <ProductList data={sortedInternets} />
         )}
+
+        {!data && <p>Каталог пуст</p>}
       </div>
     </div>
   );
