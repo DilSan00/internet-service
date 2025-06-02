@@ -21,7 +21,7 @@ export function AdminPanel() {
             activedLink(ROUTE.internetCreate) && s.active
           )}
         >
-          <IoIosAddCircle size={44} /> Добавить интернет
+          <IoIosAddCircle size={44} /> Добавить продукт
         </Link>
         <Link
           to={ROUTE.applications}

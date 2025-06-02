@@ -138,10 +138,10 @@ export function CreateProduct() {
         />
         <Input
           type="text"
-          placeholder="Введите описания продукта"
-          value={form.description}
-          validate={errors.description}
-          name="description"
+          placeholder="Введите кол-во продукта в складе"
+          value={form.quantity}
+          validate={errors.quantity}
+          name="quantity"
           onChange={handleChange}
         />
         <Input
@@ -153,11 +153,11 @@ export function CreateProduct() {
           onChange={handleChange}
         />
         <Input
-          placeholder="Введите кол-во продукта в складе"
+          placeholder="Введите описания продукта"
           textarea={true}
-          value={form.quantity}
-          validate={errors.quantity}
-          name="quantity"
+          value={form.description}
+          validate={errors.description}
+          name="description"
           onChange={handleChange}
         />
       </div>
